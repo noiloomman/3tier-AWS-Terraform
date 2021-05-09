@@ -1,5 +1,5 @@
 # 3Tier-AWS-Terraform
-Our 3-Tier architecture has three subnet tiers split across two availability zones. The web subnets also have a VPC routing table that will provide it access to the internet. The application and database tiers will not have such access; their routing tables will only allow internal network communication.
+Our 3-Tier architecture has three subnet tiers(Public, Priviate and Database) split across two availability zones. The web subnets also have a VPC routing table that will provide it access to the internet. The application and database tiers will not have such access; their routing tables will only allow internal network communication.
 
 The **Web Tier** Component will deploy the resources for handling web requests. This includes the load balancer, EC2 instances, auto scaling, and security groups.
 
