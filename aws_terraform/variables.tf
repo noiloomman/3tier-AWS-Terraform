@@ -4,12 +4,12 @@
 
 variable "aws_region" {
     description = "AWS Region"
-    type    = string
+    type    = list(string)
 }
 
 variable "vpc_cidr_block" {
     description = "Main VPC CIDR Block"
-    type    = string
+    type    = list(string)
 }
 
 variable "az_public_subnet" {
@@ -24,6 +24,6 @@ variable "az_database_subnet" {
   type = map(string)
 }
 
-variable "availability_zones" {
+variable "availability_zone" {
   type = list(string)
 }
