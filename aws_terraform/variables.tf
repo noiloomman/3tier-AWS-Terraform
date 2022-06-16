@@ -13,15 +13,15 @@ variable "vpc_cidr_block" {
 }
 
 variable "az_public_subnet" {
-  type = list(string)
+  type = map(string)
 }
 
 variable "az_private_subnet" {
-  type = list(string)
+  type = map(string)
 }
 
 variable "az_database_subnet" {
-  type = list(string)
+  type = map(string)
 }
 
 variable "availability_zone" {
