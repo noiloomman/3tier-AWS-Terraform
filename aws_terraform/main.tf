@@ -33,7 +33,7 @@ resource "aws_internet_gateway" "gw" {
 
 # Public Subnet
 resource "aws_subnet" "public_subnet" {
-  for_each = var.az_public_subnet
+  for_each = toset(var.az_public_subnet)
 
   vpc_id = aws_vpc.main.id
 
@@ -47,7 +47,7 @@ resource "aws_subnet" "public_subnet" {
 
 # Private Subnet
 resource "aws_subnet" "private_subnet" {
-  for_each = var.az_private_subnet
+  for_each = toset(var.az_private_subnet)
 
   vpc_id = aws_vpc.main.id
 
@@ -61,7 +61,7 @@ resource "aws_subnet" "private_subnet" {
 
 # Database Subnet
 resource "aws_subnet" "database_subnet" {
-  for_each = var.az_database_subnet
+  for_each = toset(var.az_database_subnet)
 
   vpc_id = aws_vpc.main.id
 
