@@ -37,8 +37,8 @@ resource "aws_subnet" "public_subnet" {
 
   vpc_id = aws_vpc.main.id
 
-  availability_zone = each.key
-  cidr_block        = each.value
+  availability_zone = [each.key]
+  cidr_block        = [each.value]
 
   tags = {
     Name = "lab-public-subnet-${each.key}"
@@ -51,8 +51,8 @@ resource "aws_subnet" "private_subnet" {
 
   vpc_id = aws_vpc.main.id
 
-  availability_zone = each.key
-  cidr_block        = each.value
+  availability_zone = [each.key]
+  cidr_block        = [each.value]
 
   tags = {
     Name = "lab-private-subnet-${each.key}"
@@ -65,8 +65,8 @@ resource "aws_subnet" "database_subnet" {
 
   vpc_id = aws_vpc.main.id
 
-  availability_zone = each.key
-  cidr_block        = each.value
+  availability_zone = [each.key]
+  cidr_block        = [each.value]
 
   tags = {
     Name = "lab-database-subnet-${each.key}"
