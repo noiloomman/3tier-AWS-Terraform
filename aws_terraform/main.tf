@@ -63,7 +63,7 @@ resource "aws_subnet" "public_subnet1" {
 #  tags = {
 #  Name = "lab-public-subnet-${each.key}"
 #  }
-}
+
 
 # Private Subnet1
   resource "aws_subnet" "private_subnet1" {
