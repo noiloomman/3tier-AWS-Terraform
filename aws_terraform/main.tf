@@ -41,6 +41,7 @@ resource "aws_subnet" "public_subnet1" {
   tags = {
     Name = "lab-Web Subnet 1"
   }
+}  
 # Public Subnet2
   resource "aws_subnet" "public_subnet2" {
   vpc_id                  = "${aws_vpc.main.id}"
@@ -51,6 +52,7 @@ resource "aws_subnet" "public_subnet1" {
   tags = {
     Name = "lab-Web Subnet 2"
   }
+}  
 #  for_each = toset(var.az_public_subnet)
 
 # vpc_id = aws_vpc.main.id
@@ -73,7 +75,7 @@ resource "aws_subnet" "public_subnet1" {
   tags = {
     Name = "lab-App Subnet 1"
   } 
-  # Private Subnet2
+} # Private Subnet2
   resource "aws_subnet" "private_subnet2" {
   vpc_id                  = "${aws_vpc.main.id}"
   cidr_block             = "${var.az_private_subnet2}"
@@ -82,7 +84,8 @@ resource "aws_subnet" "public_subnet1" {
 
   tags = {
     Name = "lab-App Subnet 2"
-  } 
+  }
+}  
   # for_each = toset(var.az_private_subnet)
 
   # vpc_id = aws_vpc.main.id
@@ -93,7 +96,6 @@ resource "aws_subnet" "public_subnet1" {
   # tags = {
   #   Name = "lab-private-subnet-${each.key}"
   # }
-}
 
 # Database Subnet
   resource "aws_subnet" "database_subnet1" {
@@ -114,6 +116,7 @@ resource "aws_subnet" "public_subnet1" {
   tags = {
     Name = "lab-DB Subnet 2"
   }
+} 
   # for_each = toset(var.az_database_subnet)
 
   # vpc_id = aws_vpc.main.id
@@ -124,7 +127,7 @@ resource "aws_subnet" "public_subnet1" {
   # tags = {
   #   Name = "lab-database-subnet-${each.key}"
   # }
-}
+
 
 # Route Table 
 resource "aws_route_table" "public_subnet_route_table" {
