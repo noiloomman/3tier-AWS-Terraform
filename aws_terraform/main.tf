@@ -104,6 +104,7 @@ resource "aws_subnet" "public_subnet1" {
   tags = {
     Name = "lab-DB Subnet 1"
   }
+}
 # Database Subnet
   resource "aws_subnet" "database_subnet2" {
   vpc_id                  = "${aws_vpc.main.id}"
