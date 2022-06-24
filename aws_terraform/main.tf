@@ -9,7 +9,7 @@ terraform {
 
 # Define region and AWS profile
 provider "aws" {
-  region  = "ap-southeast-1"
+  region  = "var.aws_region"
   profile = "default"                     #Use VS code and create a profile using AWS acces key and secret key
 }
 
