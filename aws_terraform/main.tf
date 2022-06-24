@@ -31,46 +31,98 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
-# Public Subnet
-resource "aws_subnet" "public_subnet" {
-  for_each = toset(var.az_public_subnet)
-
-  vpc_id = aws_vpc.main.id
-
-  availability_zone = [each.key]
-  cidr_block        = [each.value]
+# Public Subnet1
+resource "aws_subnet" "public_subnet1" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_public_subnet1}"
+  map_public_ip_on_launch = true
+  availability_zone = "ap-southeast-1a"
 
   tags = {
-    Name = "lab-public-subnet-${each.key}"
+    Name = "lab-Web Subnet 1"
   }
+# Public Subnet2
+  resource "aws_subnet" "public_subnet2" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_public_subnet2}"
+  map_public_ip_on_launch = false
+  availability_zone = "ap-southeast-1b"
+
+  tags = {
+    Name = "lab-Web Subnet 2"
+  }
+#  for_each = toset(var.az_public_subnet)
+
+# vpc_id = aws_vpc.main.id
+
+#  availability_zone = [each.key]
+# cidr_block        = [each.value]
+
+#  tags = {
+#  Name = "lab-public-subnet-${each.key}"
+#  }
 }
 
-# Private Subnet
-resource "aws_subnet" "private_subnet" {
-  for_each = toset(var.az_private_subnet)
-
-  vpc_id = aws_vpc.main.id
-
-  availability_zone = [each.key]
-  cidr_block        = [each.value]
+# Private Subnet1
+  resource "aws_subnet" "private_subnet1" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_private_subnet1}"
+  map_public_ip_on_launch = false
+  availability_zone = "ap-southeast-1a"
 
   tags = {
-    Name = "lab-private-subnet-${each.key}"
-  }
+    Name = "lab-App Subnet 1"
+  } 
+  # Private Subnet2
+  resource "aws_subnet" "private_subnet2" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_private_subnet2}"
+  map_public_ip_on_launch = false
+  availability_zone = "ap-southeast-1b"
+
+  tags = {
+    Name = "lab-App Subnet 2"
+  } 
+  # for_each = toset(var.az_private_subnet)
+
+  # vpc_id = aws_vpc.main.id
+
+  # availability_zone = [each.key]
+  # cidr_block        = [each.value]
+
+  # tags = {
+  #   Name = "lab-private-subnet-${each.key}"
+  # }
 }
 
 # Database Subnet
-resource "aws_subnet" "database_subnet" {
-  for_each = toset(var.az_database_subnet)
-
-  vpc_id = aws_vpc.main.id
-
-  availability_zone = [each.key]
-  cidr_block        = [each.value]
+  resource "aws_subnet" "database_subnet1" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_database_subnet1}"
+  availability_zone = "ap-southeast-1a"
 
   tags = {
-    Name = "lab-database-subnet-${each.key}"
+    Name = "lab-DB Subnet 1"
   }
+# Database Subnet
+  resource "aws_subnet" "database_subnet2" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block             = "${var.az_database_subnet2}"
+  availability_zone = "ap-southeast-1b"
+
+  tags = {
+    Name = "lab-DB Subnet 2"
+  }
+  # for_each = toset(var.az_database_subnet)
+
+  # vpc_id = aws_vpc.main.id
+
+  # availability_zone = [each.key]
+  # cidr_block        = [each.value]
+
+  # tags = {
+  #   Name = "lab-database-subnet-${each.key}"
+  # }
 }
 
 # Route Table 
